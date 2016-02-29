@@ -11,11 +11,14 @@ API
 Changelog
 ---------
 
-1.4 (2016-02-26)
+1.4 (unreleased)
 ''''''''''''''''
 
 - Allow bucket to get arbitrary attributes.
-
+- URLs with trailing slash are redirected only if the current URL does not exist
+- Partial responses can now be specified for nested objects.
+  For example, ``/records?_fields=address.street``.
+- List responses are now sorted by last_modified descending by default
 
 1.3 (2016-01-28)
 ''''''''''''''''
