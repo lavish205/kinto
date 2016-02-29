@@ -15,8 +15,8 @@ This document describes changes between each past release.
   For example, ``/records?_fields=address.street``.
 - List responses are now sorted by to last_modified descending by default (#434,
   thanks @ayusharma)
-- Server now returns 400 error if client cannot accept JSON response (#461, mozilla-services/cliquet#667)
-- Server now returns 400 error if client does not send JSON request (#461, mozilla-services/cliquet#667)
+- Server now returns 415 error response if client cannot accept JSON response (#461, mozilla-services/cliquet#667)
+- Server now returns 415 error response if client does not send JSON request (#461, mozilla-services/cliquet#667)
 
 **Breaking changes**
 

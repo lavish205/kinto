@@ -19,8 +19,8 @@ Changelog
 - Partial responses can now be specified for nested objects.
   For example, ``/records?_fields=address.street``.
 - List responses are now sorted by last_modified descending by default
-- Return 400 error if client cannot accept JSON response
-- Return 400 error if client does not send JSON request
+- Return 415 error response if client cannot accept JSON response
+- Return 415 error response if client does not send JSON request
 
 
 1.3 (2016-01-28)
