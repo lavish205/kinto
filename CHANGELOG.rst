@@ -13,7 +13,7 @@ This document describes changes between each past release.
   does not exist (#656)
 - Partial responses can now be specified for nested objects (#445)
   For example, ``/records?_fields=address.street``.
-- List responses are now sorted by to last_modified descending by default (#434,
+- List responses are now sorted by last_modified descending by default (#434,
   thanks @ayusharma)
 - Server now returns 415 error response if client cannot accept JSON response (#461, mozilla-services/cliquet#667)
 - Server now returns 415 error response if client does not send JSON request (#461, mozilla-services/cliquet#667)
@@ -25,7 +25,7 @@ This document describes changes between each past release.
 
   Subscribers are still executed within the transaction like before.
 
-  Subscribers are still executed even if transaction is eventually rolledback.
+  Subscribers are still executed even if the transaction is eventually rolledback.
   Every subscriber execution succeeds, or none.
 
   Thus, subscribers of these events should only perform operations that are reversed
@@ -35,21 +35,13 @@ This document describes changes between each past release.
 
 **New features**
 
-- Event subscribers are now ran synchronously and can now alter responses (#421)
+- Event subscribers are now ran synchronously and can thus alter responses (#421)
 - Resource events are now merged in batch requests. One event per resource and
   per action is emitted when a transaction is committed (mozilla-services/cliquet#634)
 - Monitor time of events listeners execution (mozilla-services/cliquet#503)
-- Validate that the client can accept JSON response. (mozilla-services/cliquet#667)
-- Validate that the client can only send JSON request body. (mozilla-services/cliquet#667)
 - Added a new ``AfterResourceChanged`` event, that is sent only when the commit
   in database is done and successful.
-
-  Subscribers of this event can fail, errors are swallowed and logged. The
-  final transaction result (or response) cannot be altered.
-
-  Since commit occured successfully and operations will not be rolledback,
-  subcribers running irreversible actions should subscribe to this event
-  (like sending messages, deleting files, or run asynchronous tasks).
+  `See more details <http://cliquet.readthedocs.org/en/latest/reference/notifications.html>`_.
 - Track execution time on StatsD for each authentication sub-policy (mozilla-services/cliquet#639)
 
 **Bug fixes**
