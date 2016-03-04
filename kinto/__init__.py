@@ -54,9 +54,7 @@ def main(global_config, config=None, **settings):
     config.registry.public_settings.add('cliquet.batch_max_requests')
 
     # Expose capability
-    schema_enabled = asbool(
-        settings['experimental_collection_schema_validation']
-    )
+    schema_enabled = settings['experimental_collection_schema_validation']
     if schema_enabled:
         config.add_api_capability(
             "schema",
